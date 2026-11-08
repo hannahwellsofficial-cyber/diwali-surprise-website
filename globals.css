@@ -1,0 +1,81 @@
+@import 'tailwindcss';
+
+@theme inline {
+  --color-cream: #fdf5e8;
+  --color-cream-deep: #f9e8d6;
+  --color-maroon: #74323d;
+  --color-maroon-deep: #5e2630;
+  --color-gold: #e9bd5d;
+  --color-gold-soft: #f3d58a;
+  --color-coral: #dc7a5b;
+  --color-muted: #7a5a5e;
+  --color-line: #efd9c2;
+  --color-sage: #a3b696;
+
+  --font-serif: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+  --font-sans: var(--font-dm-sans), 'DM Sans', system-ui, sans-serif;
+  --font-hand: var(--font-caveat), 'Caveat', cursive;
+}
+
+html {
+  background: var(--color-cream);
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-maroon);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-gold-soft);
+  color: var(--color-maroon);
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    transform: scaleY(1) scaleX(1) rotate(-1deg);
+  }
+  25% {
+    transform: scaleY(1.08) scaleX(0.95) rotate(1.5deg);
+  }
+  50% {
+    transform: scaleY(0.96) scaleX(1.03) rotate(-2deg);
+  }
+  75% {
+    transform: scaleY(1.05) scaleX(0.97) rotate(1deg);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.animate-flicker {
+  animation: flicker 1.6s ease-in-out infinite;
+  transform-origin: 50% 100%;
+}
+
+.animate-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
